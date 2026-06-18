@@ -37,4 +37,9 @@ public class UserService {
     public boolean deleteUser(Long id) {
         return userRepository.deleteById(id);
     }
+
+    public User patchUser(Long id, User user) {
+        Optional<User> updatedUser = userRepository.update(id, user);
+        return updatedUser.orElse(null);
+    }
 }
