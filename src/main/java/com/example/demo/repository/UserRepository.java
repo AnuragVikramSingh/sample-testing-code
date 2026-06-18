@@ -30,4 +30,8 @@ public class UserRepository {
         users.add(user);
         return user;
     }
+
+    public boolean deleteById(Long id) {
+        return users.removeIf(user -> user.getId().equals(id));
+    }
 }
