@@ -34,4 +34,17 @@ public class UserRepository {
     public boolean deleteById(Long id) {
         return users.removeIf(user -> user.getId().equals(id));
     }
+
+    public Optional<User> update(Long id, User updatedUser) {
+        Optional<User> existingUser = findById(id);
+        existingUser.ifPresent(user -> {
+            if (updatedUser.getName() != null) {
+                user.setName(updatedUser.getName());
+            }
+            if (updatedUser.getEmail() != null) {
+                user.setEmail(updatedUser.getEmail());
+            }
+        });
+        return existingUser;
+    }
 }
