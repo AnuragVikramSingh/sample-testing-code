@@ -24,4 +24,13 @@ public class UserService {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
+
+    public User createUser(User user) {
+        Long nextId = userRepository.findAll().stream()
+                .mapToLong(User::getId)
+                .max()
+                .orElse(0L) + 1;
+        user.setId(nextId);
+        return userRepository.save(user);
+    }
 }
