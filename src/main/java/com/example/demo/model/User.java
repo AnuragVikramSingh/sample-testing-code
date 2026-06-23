@@ -1,9 +1,17 @@
 package com.example.demo.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "User entity representing a system user")
 public class User {
 
+    @Schema(description = "Unique identifier of the user", example = "1")
     private Long id;
+
+    @Schema(description = "Name of the user", example = "John Doe")
     private String name;
+
+    @Schema(description = "Email address of the user", example = "john.doe@example.com")
     private String email;
 
     public User() {
